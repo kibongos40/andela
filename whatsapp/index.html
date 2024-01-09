@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+        integrity="sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Whatsapp</title>
+        <link rel="stylesheet" href="assets/bootstrap.css">
+        <script src="assets/jquery.js"></script>
+</head>
+<body class="m-0 p-0">
+    <div class="app">
+        <div class="all">
+            <div class="title bg-dark border-bottom p-0 row m-0">
+                <div class="title-left col-3 p-0">
+                    <div class="border-right d-flex align-items-center py-2 px-3" style="height: 60px;justify-content: space-between;">
+                        <img src="assets/avatar.png" alt="Profile" style="max-height: 100%;">
+                        <div class="d-flex align-items-center" style="font-size: 25px;color: #fff;">
+                            <i class="fa fa-group mx-2"></i>
+                            <i class="fa fa-envelope mx-2"></i>
+                            <i class="fa fa-ellipsis-v mx-2"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9 title-right d-flex align-items-center px-3 py-2" style="height: 60px;">
+                    <img src="assets/avatar.png" alt="Profile" style="max-height: 100%;">
+                    <div class="r-details px-3 text-light">
+                        <h5 class="m-0">Sample Name</h5>
+                        <span>last seen today at 15:30</span>
+                    </div>
+                </div>
+            </div>
+            <div class="main row m-0 p-0 bg-darker" style="height: calc(100vh - 61px);">
+                <div class="left col-3 p-0 text-light border-right h-100" style="overflow-y: auto;">
+                    <div class="archive p-3" style="font-size: 20px;">
+                        <i class="fa fa-archive ml-3 mr-3" style="color: #00a884;"></i> Archived
+                    </div>
+                    <div class="chats">
+                    </div>
+                </div>
+                <div class="right col-9 p-0 text-light h-100" style="overflow-y: auto;background: url(assets/bg.png);">
+
+                    <!-- Main chat  -->
+                    <div class="messages" style="height: calc(100% - 44px);background: rgba(11, 20, 26,0.9);">
+                        <div class="main-chat p-3 d-flex flex-column h-100" style="justify-content: flex-end;">
+                            <div class="from">
+                                <div class="box">Hello Simon</div>
+                            </div>
+                            <div class="from">
+                                <div class="box">How are you doing??</div>
+                            </div>
+                            <div class="to">
+                                <div class="box">I'm doing well</div>
+                            </div>
+                            <div class="to">
+                                <div class="box">And you??</div>
+                            </div>
+                            <div class="from">
+                                <div class="box">I'm fine too</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat input box -->
+
+                    <div class="chatbox py-2 px-3 d-flex align-items-center" style="font-size: 20px;background: #202c33;">
+                        <i class="fa fa-plus mr-2"></i>
+                        <div class="input-group p-1 rounded-lg">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-smile-o" style="font-size: 20px;"></i>
+                                </div>
+                            </div>
+                            <input style="flex: 1;" type="text" name="message" id="message" placeholder="Type a message">
+                        </div>
+                        <i class="fa fa-microphone ml-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        :root{
+            --bg-light: #222e35;
+            --bg-dark: #111b21;
+        }
+        .bg-darker{
+            background: var(--bg-dark);
+        }
+        .bg-lighter{
+            background: var(--bg-light);
+        }
+        *{
+            box-sizing: border-box;
+        }
+        body, html{
+            overflow: hidden;
+        }
+        .chatbox{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: var(--bg-light) !important;
+        }
+        .input-group, .input-group *, .input-group * *, .input-group * * *{
+            background: #2a3942;
+            border: none;
+            color: #fff;
+            outline: none;
+            /* background: var(--bg-light); */
+        }
+        .chats .chat img{
+            height: 60px !important;
+            width: 60px;
+            border-radius: 70px;
+            /* background: #fff; */
+            padding: 2px;
+        }
+        .chats .chat-0 img{
+            border:2px solid #008069 !important;
+        }
+        .main-chat .to, .main-chat .from{
+            width: 100%;
+            background-color: rgba(255, 0, 0, 0.116);
+            padding: 1px 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .main-chat .from{
+            display: flex;
+            justify-content: flex-start;
+            background-color: rgba(3, 52, 80, 0.316);
+        }
+        .main-chat .to .box, .main-chat .from .box {
+            background: #005c4b;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline;
+        }
+        .main-chat .from .box{
+            background: var(--bg-light);
+        }
+    </style>
+    <script>
+        function chats(n){
+            for(let i = 0; i < n; i++){
+                $(".chats").append(`
+                <div class= "chat-${i%3} chat d-flex align-items-center pl-3" style = "height: 72px;" >
+                    <img src="assets/chat${i%5}.png" alt="Chat profile" class="h-o100">
+                        <div class="side-message h-100 d-flex flex-column justify-content-center border-top col">
+                            <span style="font-size: 20px;">Sample User ${i+1}</span>
+                            <span style="color: silver">Sample Message 1</span>
+                        </div>
+                </div>
+                `);
+            }
+        }
+        chats(10);
+    </script>
+</body>
+</html>
