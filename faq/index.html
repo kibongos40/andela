@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+        integrity="sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Whatsapp</title>
+    <link rel="stylesheet" href="assets/bootstrap.css">
+    <script src="assets/jquery.js"></script>
+
+</head>
+
+<body class="m-0 p-0 row">
+    <div class="m-0 col-md-12 p-0" style="background: #2c142f;height: 300px;">
+        <img src="assets/vector.png" alt="Vector" class="w-100 h-100">
+    </div>
+    <div class="main col-md-7 p-5 mx-auto rounded-lg" style="box-shadow: 0px 20px 20px #ccc;max-width: 95%;">
+        <div class="heading mb-4 d-flex align-items-center">
+            <img src="assets/star.png" class="mr-2" alt="Star" style="height: 50px;">
+            <h1>FAQs</h1>
+        </div>
+        <div class="faqs">
+        </div>
+    </div>
+    <style>
+        .main{
+            background: #fff;
+            margin-top: -180px;
+        }
+        .faq{
+            padding: 10px 0;
+        }
+        .faq-header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        @keyframes show{
+            from{
+                transform: scale(0);
+            }
+            to{
+                transform: scale(1);
+            }
+        }
+        .faq-content{
+            animation: 1s show linear;
+        }
+        .icon{
+            background: #2c142f;
+            height: 20px;
+            width: 20px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+    </style>
+    <script>
+        function faqs(n){
+            let headings = ['Faq','Another FAQ','More FAQs'];
+            for (let index = 0; index < n; index++) {
+                $(".faqs").append(`
+                    <div class="faq">
+                        <div class="faq-header">
+                            <strong>
+                                ${headings[index%3]}
+                            </strong>
+                            <div class="icon" onclick="toggle_faq(this)">
+                                <i class="fa fa-minus"></i>
+                            </div>
+                        </div>
+                        <div class="faq-content">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos eaque voluptatem
+                            labore. Obcaecati ad iste consequatur. Asperiores omnis ad labore rerum vel, sed
+                            delectus praesentium expedita nam unde accusantium quam?
+                        </div>
+                    </div>
+                `);
+            }
+        }
+        faqs(3);
+        function toggle_faq(el){
+            $(el).children().toggleClass('fa-minus').toggleClass('fa-plus');
+            $(el).parent().parent().children('.faq-content').toggle();
+        }
+    </script>
+</body>
+
+</html>
